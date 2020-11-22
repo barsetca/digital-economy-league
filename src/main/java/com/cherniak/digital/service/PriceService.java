@@ -16,4 +16,12 @@ public class PriceService {
   public List<Price> getList(LocalDate date) {
     return repository.getList(date);
   }
+
+  public List<Object[]> getFrequencyPriceChangeByProducts() {
+    return repository.getFrequencyPriceChangeByProducts();
+  }
+
+  public List<Object[]> getFrequencyPriceChangeByDates() {
+    return repository.getFrequencyPriceChangeByDates();
+  }
 }
