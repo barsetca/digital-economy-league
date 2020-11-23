@@ -36,13 +36,15 @@ public class CsvParser {
 
   private ProductService productService;
   private String dir;
+  private long scanTimeout;
 
   private List<Path> dirContent;
   private List<Path> newContent;
 
-  public CsvParser(ProductService productService, String dir) {
+  public CsvParser(ProductService productService, String dir, long scanTimeout) {
     this.productService = productService;
     this.dir = dir;
+    this.scanTimeout = scanTimeout;
     dirContent = new CopyOnWriteArrayList<>();
     newContent = new CopyOnWriteArrayList<>();
   }
@@ -55,7 +57,7 @@ public class CsvParser {
 
     while (true) {
       try {
-        sleep(1000);
+        sleep(scanTimeout);
       } catch (InterruptedException e) {
         log.error("Ошибка обработки потока {}", e.getMessage());
       }
@@ -82,7 +84,8 @@ public class CsvParser {
     AtomicInteger count = new AtomicInteger(0);
     try {
       ICsvBeanReader csvBeanReader = new CsvBeanReader(new FileReader(path.toString()),
-          CsvPreference.STANDARD_PREFERENCE);
+          CsvPreference.EXCEL_NORTH_EUROPE_PREFERENCE);
+
       String[] mapping = new String[]{"productId", "name", "priceId", "price", "date"};
 
       CellProcessor[] procs = getProcessors();

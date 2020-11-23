@@ -14,6 +14,8 @@ public class ApplicationConfig {
 
   private static ProductService productService;
   private static final String LOAD_DIR_PATH = "C:/newprojects/digital-economy-league/upload";
+  private static final long CSV_SCAN_TIMEOUT = 1000L;
+
 
   @Autowired
   public void setProductService(ProductService productService) {
@@ -24,7 +26,7 @@ public class ApplicationConfig {
     SpringApplication.run(ApplicationConfig.class, args);
     new Thread(() -> {
       try {
-        new CsvParser(productService, LOAD_DIR_PATH).load();
+        new CsvParser(productService, LOAD_DIR_PATH, CSV_SCAN_TIMEOUT).load();
       } catch (IOException e) {
         log.error("Щшибка загрузки из директории {} с сообщением: {}", LOAD_DIR_PATH,
             e.getMessage());
