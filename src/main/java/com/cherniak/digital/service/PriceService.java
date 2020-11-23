@@ -6,7 +6,6 @@ import java.time.LocalDate;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 @Service
 @RequiredArgsConstructor
@@ -23,13 +22,6 @@ public class PriceService {
   }
 
   public List<Object[]> getFrequencyPriceChangeByDates() {
-
     return repository.getFrequencyPriceChangeByDates();
-  }
-
-  @Transactional
-  public Price saveOrUpdate(Price price) {
-    return repository.save(price);
-
   }
 }
