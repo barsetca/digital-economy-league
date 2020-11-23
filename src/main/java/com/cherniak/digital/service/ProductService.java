@@ -1,6 +1,7 @@
 package com.cherniak.digital.service;
 
 import com.cherniak.digital.repository.ProductRepository;
+import java.util.concurrent.atomic.AtomicInteger;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -10,7 +11,7 @@ public class ProductService {
 
   private final ProductRepository repository;
 
-  public int getCount() {
+  public Integer getCount() {
     return repository.getCount();
   }
 }
