@@ -1,5 +1,6 @@
 package com.cherniak.digital.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,6 +12,7 @@ import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.Cascade;
 
 @Entity
 @NoArgsConstructor
@@ -28,7 +30,8 @@ public class Product {
   private String name;
 
   @OneToMany(mappedBy = "product")
-  private List<Price> prices;
+  @Cascade(org.hibernate.annotations.CascadeType.ALL)
+  private List<Price> prices = new ArrayList<>();
 
   public Product(@NotBlank String name) {
     this(null, name);
