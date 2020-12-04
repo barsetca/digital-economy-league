@@ -15,7 +15,7 @@ public class FrequencyPriceChangeByDate implements Serializable {
   private LocalDate date;
   private Long frequency;
 
-  public FrequencyPriceChangeByDate(Object... fields) {
+  public FrequencyPriceChangeByDate(Object ... fields) {
     this.date = (LocalDate) fields[0];
     this.frequency = (Long) fields[1];
   }

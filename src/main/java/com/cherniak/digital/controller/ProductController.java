@@ -50,11 +50,11 @@ public class ProductController {
 
     Future<Integer> countProductsFuture = getCountProductsFuture(latch, executorService);
 
-    Future<List<FrequencyPriceChangeByProduct>> frequencyPriceChangeByProductFuture = getListPriceChangeByProductFuture(
-        latch, executorService);
+    Future<List<FrequencyPriceChangeByProduct>> frequencyPriceChangeByProductFuture =
+        getListPriceChangeByProductFuture(latch, executorService);
 
-    Future<List<FrequencyPriceChangeByDate>> frequencyPriceChangeByDateFuture = getListPriceChangeByDateFuture(
-        latch, executorService);
+    Future<List<FrequencyPriceChangeByDate>> frequencyPriceChangeByDateFuture =
+        getListPriceChangeByDateFuture(latch, executorService);
 
     try {
       latch.await();

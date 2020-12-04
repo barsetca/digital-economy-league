@@ -53,7 +53,7 @@ public class CsvParser {
 
     Path path = Paths.get(dir);
     dirContent = Files.list(path).collect(toList());
-    dirContent.forEach(this::loadDates);
+    dirContent.forEach(this::loadData);
 
     while (true) {
       try {
@@ -64,8 +64,6 @@ public class CsvParser {
       newContent = Files.list(path).collect(toList());
       checkNewFile();
       dirContent = Files.list(path).collect(toList());
-
-
     }
   }
 
@@ -75,10 +73,10 @@ public class CsvParser {
     if (newContent.isEmpty()) {
       return;
     }
-    newContent.forEach(this::loadDates);
+    newContent.forEach(this::loadData);
   }
 
-  private void loadDates(Path path) {
+  private void loadData(Path path) {
     String simpleFileName = path.getFileName().toString();
     log.info("Начало загрузки файла {}", simpleFileName);
     AtomicInteger count = new AtomicInteger(0);

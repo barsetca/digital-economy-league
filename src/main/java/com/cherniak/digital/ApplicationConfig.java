@@ -27,8 +27,9 @@ public class ApplicationConfig {
     new Thread(() -> {
       try {
         new CsvParser(productService, LOAD_DIR_PATH, CSV_SCAN_TIMEOUT).load();
+
       } catch (IOException e) {
-        log.error("Щшибка загрузки из директории {} с сообщением: {}", LOAD_DIR_PATH,
+        log.error("Ошибка загрузки из директории {} с сообщением: {}", LOAD_DIR_PATH,
             e.getMessage());
       }
     }).start();
