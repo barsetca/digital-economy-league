@@ -95,9 +95,7 @@ public class ProductController {
     return executorService
         .submit(() -> {
           List<FrequencyPriceChangeByDate> listDates = priceService
-              .getFrequencyPriceChangeByDates()
-              .stream().map(FrequencyPriceChangeByDate::new).collect(
-                  Collectors.toList());
+              .getFrequencyPriceChangeByDates();
           latch.countDown();
           return listDates;
         });
@@ -109,9 +107,7 @@ public class ProductController {
     return executorService
         .submit(() -> {
           List<FrequencyPriceChangeByProduct> listProducts = priceService
-              .getFrequencyPriceChangeByProducts().stream().map(
-                  FrequencyPriceChangeByProduct::new)
-              .collect(Collectors.toList());
+              .getFrequencyPriceChangeByProducts();
           latch.countDown();
           return listProducts;
         });
